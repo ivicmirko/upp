@@ -51,6 +51,9 @@ public class SystemUser {
 	@Column
 	private String reviewer; //yes/no/asking
 	
+	@Column
+	private String authority;
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<ScienceArea> scienceAreas = new ArrayList<>();
 	
@@ -58,10 +61,9 @@ public class SystemUser {
 		
 	}
 
-
-
 	public SystemUser(long id, String name, String surname, String city, String country, String title, String email,
-			String username, String password, boolean active, String reviewer, List<ScienceArea> scienceAreas) {
+			String username, String password, boolean active, String reviewer, String authority,
+			List<ScienceArea> scienceAreas) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -74,9 +76,17 @@ public class SystemUser {
 		this.password = password;
 		this.active = active;
 		this.reviewer = reviewer;
+		this.authority = authority;
 		this.scienceAreas = scienceAreas;
 	}
 
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
 
 
 	public long getId() {
